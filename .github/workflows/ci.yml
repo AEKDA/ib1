@@ -21,4 +21,4 @@ jobs:
           path: '.'
           format: 'HTML'
           out: 'reports'
-          use-container: false
+          use-container: true
