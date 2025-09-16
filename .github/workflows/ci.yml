@@ -15,10 +15,4 @@ jobs:
       - name: Run SpotBugs
         run: mvn com.github.spotbugs:spotbugs-maven-plugin:check
       - name: OWASP Dependency Check
-        uses: dependency-check/Dependency-Check_Action@main
-        with:
-          project: 'secureapi'
-          path: '.'
-          format: 'HTML'
-          out: 'reports'
-          use-container: true
+        run: mvn org.owasp:dependency-check-maven:check -Dformat=HTML -DoutputDirectory=reports
