@@ -23,3 +23,8 @@ jobs:
           path: '.'
           format: 'HTML'
           out: 'reports'
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+          name: Depcheck report
+          path: ${{github.workspace}}/reports
