@@ -21,5 +21,4 @@ jobs:
           path: '.'
           format: 'HTML'
           out: 'reports'
-        env:
-          JAVA_HOME: ${{ env.JAVA_HOME }}
+          use-container: false
