@@ -3,6 +3,7 @@ package com.aekda.lab1.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +20,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DataController {
     private final UserService userService;
+
     @GetMapping("/data")
-    public List<DataResponse> getData(){
-        return userService.findAll().stream().map(t -> new DataResponse(t.getId(), t.getUsername())).collect(Collectors.toList());
+    public List<DataResponse> getData() {
+        return userService.findAll().stream().map(t -> new DataResponse(
+                t.getId(),
+                StringEscapeUtils.escapeHtml4(t.getUsername())
+        ))
+                .collect(Collectors.toList());
     }
 }
